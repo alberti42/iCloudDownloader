@@ -1,30 +1,46 @@
 # iCloudDownloader
 
-This is a simple CLI interface for fetching file and folder from the iCloud Storage. 
+This is a simple CLI for fetching files and folders from iCloud Drive.
 
-## Why this CLI ?
+## Why this CLI?
 
-Downloading a file stored on iCloud from the Finder is easy, one click and you are done. But when you are on a terminal, you can't open a *.icloud* file in order to force download the file. **iCloudDownloader** is here to fix this issue by provinding a quick command for force download an iCloud file.
+Downloading a file stored on iCloud from the Finder is easy, one click and you are done. But in the terminal, you can't open a `.icloud` placeholder to force a download. **iCloudDownloader** provides a quick command to force-download iCloud files.
 
 ## Installation
 
-* [Download the lastest version](https://github.com/farnots/iCloudDownloader/releases)
-* Extract the file : `tar -xf ./icd_1.0.tar`
-* Move the executable to the */usr/local/bin/* : `mv ./icd /usr/local/bin/icd`
+* [Download the latest version](https://github.com/farnots/iCloudDownloader/releases)
+* Extract the file: `tar -xf ./icd_1.0.tar`
+* Move the executable to `/usr/local/bin`: `mv ./icd /usr/local/bin/icd`
 
 ## Usage
 
-* Download a file : `icd <local_file_path>`
-* Download a fodler : `icd <local_folder_path>`
-* Download all current folder : `icd -A`
+```
+icd <local_file_path>
+icd <local_folder_path>
+icd -r <local_folder_path>
+icd -A
+icd -A -r
+icd -h
+icd -v <local_file_path>
+```
 
-## Compatiblity
+Options:
+- `-A` Download all items in the current folder
+- `-r` Recurse into subfolders
+- `-v` Verbose output
+- `-h` Show help
+By default, only errors are printed.
 
-iCloudDownloader should work on macOS 10.2 Sierra, and on OS X 10.11 El Capitan.
+Examples:
+- Download a file: `icd ~/iCloud/Notes/todo.txt`
+- Download a folder recursively: `icd -r ~/iCloud/Projects`
 
-## Futur improvement
+## Compatibility
+
+iCloudDownloader should work on macOS 10.12 Sierra and OS X 10.11 El Capitan.
+
+## Future improvement
 
 * Create a full iCloud manager from the terminal
     * Erase file
     * See download progression
-

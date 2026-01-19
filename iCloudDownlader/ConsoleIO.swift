@@ -15,7 +15,16 @@ enum OutputType {
 }
 
 class ConsoleIO {
+    private let isVerbose: Bool
+    
+    init(isVerbose: Bool = false) {
+        self.isVerbose = isVerbose
+    }
+    
     func writeMessage(_ message: String, to: OutputType = .standard) {
+        if !isVerbose && to != .error {
+            return
+        }
         switch to {
         case .standard:
             print("\(message)")
