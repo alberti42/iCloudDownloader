@@ -18,14 +18,11 @@ Downloading a file stored on iCloud from the Finder is easy, one click and you a
 icd <local_file_path>
 icd <local_folder_path>
 icd -r <local_folder_path>
-icd -A
-icd -A -r
 icd -h
 icd -v <local_file_path>
 ```
 
 Options:
-- `-A` Download all items in the current folder
 - `-r` Recurse into subfolders
 - `-v` Verbose output
 - `-h` Show help
@@ -34,10 +31,21 @@ By default, only errors are printed.
 Examples:
 - Download a file: `icd ~/iCloud/Notes/todo.txt`
 - Download a folder recursively: `icd -r ~/iCloud/Projects`
+- Download the current folder: `icd $PWD`
+
+Notes:
+- iCloud folders can appear downloaded even when some of their contents are not. The tool always enumerates folder contents and downloads files it finds.
+- Non-recursive mode only checks files directly inside the provided folder path and does not traverse into subdirectories.
+- Use `-r` to include subdirectories (recursive traversal).
+- Items excluded from iCloud sync (for example via `.nosync`) are skipped.
 
 ## Compatibility
 
 iCloudDownloader should work on macOS 10.12 Sierra and OS X 10.11 El Capitan.
+
+## Deprecated
+
+- `-A` (download all items in the current folder) is deprecated. Use `icd $PWD` or `icd -r $PWD` instead.
 
 ## Future improvement
 

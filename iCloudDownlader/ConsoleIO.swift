@@ -21,8 +21,8 @@ class ConsoleIO {
         self.isVerbose = isVerbose
     }
     
-    func writeMessage(_ message: String, to: OutputType = .standard) {
-        if !isVerbose && to != .error {
+    func writeMessage(_ message: String, to: OutputType = .standard, always: Bool = false) {
+        if !isVerbose && to != .error && !always {
             return
         }
         switch to {
